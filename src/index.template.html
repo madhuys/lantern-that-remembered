@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Lantern That Remembered</title>
+<meta name="description" content="A short story in three chapters. A girl who draws maps, a boy who is a promise, and a lighthouse that buys memories.">
+<meta name="theme-color" content="#F8F5F4">
+<link rel="preload" href="assets/fonts/InstrumentSerif-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="assets/fonts/Newsreader-Regular.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="scrollcraft.css">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-ground="paper">
+<a class="skip" href="#ch1">Skip to the story</a>
+
+<!-- Shared map drawing. Both figures (chapter I, the beam) <use> these. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="hatch-field" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+      <line x1="0" y1="0" x2="0" y2="10" stroke="#8C7A6B" stroke-width="1.1" opacity=".55"/>
+    </pattern>
+    <pattern id="hatch-field-2" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(-24)">
+      <line x1="0" y1="0" x2="0" y2="12" stroke="#8C7A6B" stroke-width="1" opacity=".45"/>
+    </pattern>
+    <pattern id="waves" width="46" height="16" patternUnits="userSpaceOnUse">
+      <path d="M0 9 q5.75 -6 11.5 0 t11.5 0 t11.5 0 t11.5 0" fill="none" stroke="#D7E4E5" stroke-width="1.3" opacity=".75"/>
+    </pattern>
+    <filter id="stain" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="paper-grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .36  0 0 0 0 .3  0 0 0 .22 0"/></filter>
+
+    <symbol id="map-base" viewBox="0 0 1000 680">
+      <rect width="1000" height="680" fill="#F1E8DC"/>
+      <rect width="1000" height="680" filter="url(#paper-grain)" opacity=".7"/>
+      <rect x="18" y="18" width="964" height="644" fill="none" stroke="#6E422B" stroke-width="1.2" opacity=".5"/>
+      <rect x="26" y="26" width="948" height="628" fill="none" stroke="#6E422B" stroke-width=".6" opacity=".4"/>
+      <!-- the invented fields, laid over where the sea was -->
+      <g class="m-fields">
+        <path d="M40 520 L250 500 L270 640 L40 640 Z" fill="url(#hatch-field)"/>
+        <path d="M285 505 L520 430 L560 560 L300 620 Z" fill="url(#hatch-field-2)"/>
+        <path d="M580 440 L760 520 L720 640 L590 600 Z" fill="url(#hatch-field)"/>
+        <path d="M780 520 L960 420 L960 640 L740 640 Z" fill="url(#hatch-field-2)"/>
+        <g fill="none" stroke="#5B4A3F" stroke-width="1.2" opacity=".7">
+          <path d="M40 520 L250 500 L270 640"/><path d="M285 505 L520 430 L560 560 L300 620 Z"/>
+          <path d="M580 440 L760 520 L720 640"/><path d="M780 520 L960 420"/>
+        </g>
+      </g>
+      <!-- railway, with ties -->
+      <path d="M40 600 C260 560 520 640 960 560" fill="none" stroke="#2D221C" stroke-width="2.4"/>
+      <path d="M40 600 C260 560 520 640 960 560" fill="none" stroke="#2D221C" stroke-width="9" stroke-dasharray="1.4 13" opacity=".8"/>
+      <rect x="610" y="584" width="54" height="22" fill="#F1E8DC" stroke="#2D221C" stroke-width="1.6"/>
+      <!-- roads -->
+      <g fill="none" stroke="#5B4A3F" stroke-width="3" stroke-linecap="round" opacity=".75">
+        <path d="M250 300 C320 380 420 430 520 470 S700 520 760 520"/>
+        <path d="M180 330 C200 430 240 500 270 640"/>
+        <path d="M520 470 L560 560"/>
+      </g>
+      <!-- the salt stain on the oldest sheet: the only memory of the shore -->
+      <path class="m-stain" d="M30 470 C120 450 190 520 300 500 S470 370 560 412 S700 560 820 500 S930 380 972 396" fill="none" stroke="#B88A62" stroke-width="16" opacity=".32" filter="url(#stain)"/>
+      <!-- the town -->
+      <g fill="#E3D6C6" stroke="#2D221C" stroke-width="1.3">
+        <rect x="90" y="120" width="38" height="26"/><rect x="138" y="112" width="30" height="34"/><rect x="178" y="126" width="44" height="24"/>
+        <rect x="96" y="170" width="30" height="30"/><rect x="232" y="118" width="34" height="28"/><rect x="276" y="132" width="40" height="26"/>
+        <rect x="94" y="226" width="44" height="26"/><rect x="148" y="236" width="28" height="30"/><rect x="290" y="186" width="34" height="34"/>
+        <rect x="330" y="226" width="40" height="26"/><rect x="250" y="250" width="30" height="28"/><rect x="98" y="286" width="36" height="28"/>
+        <rect x="382" y="160" width="32" height="30"/><rect x="420" y="214" width="38" height="28"/><rect x="344" y="114" width="30" height="26"/>
+      </g>
+      <circle cx="200" cy="198" r="34" fill="none" stroke="#2D221C" stroke-width="1.3"/>
+      <circle cx="200" cy="198" r="5" fill="#2D221C"/>
+      <!-- the lighthouse that was never there -->
+      <g transform="translate(872 452)">
+        <path d="M-9 0 L-5 -46 L5 -46 L9 0 Z" fill="#F1E8DC" stroke="#2D221C" stroke-width="1.6"/>
+        <rect x="-7" y="-56" width="14" height="10" fill="#AD633D" stroke="#2D221C" stroke-width="1.4"/>
+        <path d="M-8 -56 L0 -64 L8 -56" fill="#2D221C"/>
+        <path d="M-14 0 h28" stroke="#2D221C" stroke-width="2"/>
+      </g>
+      <!-- compass -->
+      <g transform="translate(905 110)" fill="none" stroke="#6E422B" stroke-width="1.2">
+        <circle r="34" opacity=".6"/><circle r="26" opacity=".35"/>
+        <path d="M0 -44 L7 0 L0 44 L-7 0 Z" fill="#6E422B" fill-opacity=".18"/>
+        <path d="M-44 0 L0 7 L44 0 L0 -7 Z" fill="#6E422B" fill-opacity=".08"/>
+      </g>
+      <g class="m-label" font-family="Instrument Serif, Georgia, serif" font-style="italic" fill="#3E302A">
+        <text x="200" y="254" font-size="22" text-anchor="middle" stroke="#EFE6D8" stroke-width="6" paint-order="stroke" stroke-linejoin="round">Market Square</text>
+        <text x="637" y="628" font-size="18" text-anchor="middle">Railway Station</text>
+        <text x="380" y="545" font-size="19" transform="rotate(-14 380 545)">Long Field</text>
+        <text x="830" y="600" font-size="18">New Pasture</text>
+        <text x="610" y="396" font-size="17" transform="rotate(18 610 396)">new road</text>
+        <text x="905" y="62" font-size="16" text-anchor="middle">N</text>
+      </g>
+      <text x="58" y="70" font-family="Instrument Serif, Georgia, serif" font-size="30" fill="#2D221C">The Harbour Town</text>
+      <text x="58" y="92" font-family="Newsreader, Georgia, serif" font-size="13" letter-spacing="2.4" fill="#6E422B">SURVEYED BY M.</text>
+      <text x="972" y="650" text-anchor="end" font-family="Instrument Serif, Georgia, serif" font-style="italic" font-size="19" fill="#8F4E2E">Leave room for what you cannot see.</text>
+    </symbol>
+
+    <symbol id="map-lost" viewBox="0 0 1000 680">
+      <g class="m-sea" style="opacity:var(--sea,1)">
+        <path d="M30 470 C120 450 190 520 300 500 S470 370 560 412 S700 560 820 500 S930 380 972 396 L972 662 L30 662 Z" fill="#527C83"/>
+        <path d="M30 470 C120 450 190 520 300 500 S470 370 560 412 S700 560 820 500 S930 380 972 396 L972 662 L30 662 Z" fill="url(#waves)"/>
+        <!-- quay and piers -->
+        <g stroke="#3B2A22" stroke-width="5" stroke-linecap="square">
+          <path d="M470 418 L470 470"/><path d="M520 404 L528 462"/><path d="M640 470 L612 520"/>
+        </g>
+        <!-- moored boats -->
+        <g fill="#E9DED0" stroke="#2D221C" stroke-width="1.3">
+          <path d="M440 488 q22 10 44 0 l-6 10 h-32 z"/><path d="M548 478 q20 9 40 0 l-5 9 h-30 z"/>
+          <path d="M700 590 q24 10 48 0 l-6 11 h-36 z"/><path d="M220 570 q20 9 40 0 l-5 9 h-30 z"/>
+        </g>
+        <g font-family="Instrument Serif, Georgia, serif" font-style="italic" fill="#F3EEE6">
+          <text x="500" y="560" font-size="34" text-anchor="middle">The Harbour</text>
+          <text x="186" y="620" font-size="18">the old riverbed meets the sea</text>
+          <text x="800" y="572" font-size="17">the quay</text>
+        </g>
+      </g>
+      <path class="m-coast" style="stroke-dasharray:1 1;stroke-dashoffset:var(--coast-off,0)" pathLength="1" d="M30 470 C120 450 190 520 300 500 S470 370 560 412 S700 560 820 500 S930 380 972 396" fill="none" stroke="#AD633D" stroke-width="5" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- Folio: the margin tells you where you are, the way a printed book does. -->
+<p class="folio" aria-hidden="true"><span class="folio__n">I</span><span class="folio__t">The Missing Shore</span></p>
+
+<header class="title" id="top" aria-label="Title page">
+  <div class="title__planes" aria-hidden="true">
+    <svg class="plane plane--sky" data-depth="0.55" data-px="4" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#C9C2D9"/><stop offset=".42" stop-color="#E4DEE8"/><stop offset=".58" stop-color="#F3EEE9"/><stop offset="1" stop-color="#F3EEE9"/>
+        </linearGradient>
+        <radialGradient id="sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF9EF"/><stop offset="1" stop-color="#FFF9EF" stop-opacity="0"/></radialGradient>
+      </defs>
+      <rect width="1600" height="1000" fill="url(#sky)"/>
+      <circle cx="380" cy="210" r="230" fill="url(#sun)" opacity=".8"/>
+      <circle cx="1310" cy="150" r="22" fill="none" stroke="#F8F5F4" stroke-width="2" opacity=".75"/>
+      <path d="M1296 140 a22 22 0 0 0 30 26 a26 26 0 0 1 -30 -26z" fill="#F8F5F4" opacity=".6"/>
+      <g fill="none" stroke="#F8F5F4" stroke-width="2" opacity=".55" stroke-linecap="round">
+        <path d="M120 300 h220"/><path d="M180 322 h300"/><path d="M980 260 h260"/><path d="M1060 284 h180"/>
+      </g>
+    </svg>
+
+    <svg class="plane plane--far" data-depth="0.4" data-px="9" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="beam" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0" stop-color="#FFF6E4" stop-opacity=".95"/><stop offset=".55" stop-color="#FFF3DD" stop-opacity=".45"/><stop offset="1" stop-color="#FFF3DD" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <!-- the hole the sea left: a ghost horizon in sea glass -->
+      <g stroke="#527C83" fill="none" stroke-linecap="round">
+        <path d="M0 600 H1600" stroke-width="1.4" opacity=".55"/>
+        <path d="M60 612 H700" stroke-width="1" opacity=".35" stroke-dasharray="40 18"/>
+        <path d="M820 621 H1520" stroke-width="1" opacity=".3" stroke-dasharray="60 24"/>
+        <path d="M300 634 H1100" stroke-width="1" opacity=".22" stroke-dasharray="30 30"/>
+      </g>
+      <!-- the town behind, on the left -->
+      <g fill="#B9B0C3">
+        <path d="M0 600 V548 h40 v-20 l18 -16 l18 16 v20 h30 v-34 h26 v34 h22 l26 -24 l26 24 v-12 h36 v40 h24 v-18 l20 -18 l20 18 v40 Z"/>
+        <rect x="128" y="476" width="10" height="38"/>
+      </g>
+      <!-- lighthouse on a lump of salt -->
+      <path d="M1080 600 C1140 566 1220 556 1260 560 C1320 566 1380 584 1430 600 Z" fill="#E7E2E3"/>
+      <g class="lh">
+        <path d="M1234 562 L1242 452 L1270 452 L1278 562 Z" fill="#F8F5F4" stroke="#4A4056" stroke-width="2.4"/>
+        <path d="M1238 510 L1274 510 L1275 526 L1237 526 Z" fill="#645A81" opacity=".85"/>
+        <path d="M1240 474 L1272 474 L1272 486 L1240 486 Z" fill="#645A81" opacity=".85"/>
+        <rect x="1236" y="444" width="40" height="8" fill="#4A4056"/>
+        <rect x="1244" y="420" width="24" height="24" fill="#FFE9C2" stroke="#4A4056" stroke-width="2"/>
+        <path d="M1240 420 L1256 404 L1272 420 Z" fill="#AD633D" stroke="#4A4056" stroke-width="2"/>
+      </g>
+      <polygon class="lh-beam" points="1256,432 -300,300 -300,560" fill="url(#beam)"/>
+    </svg>
+
+    <svg class="plane plane--mid" data-depth="0.24" data-px="15" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <linearGradient id="salt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ECE8E8"/><stop offset="1" stop-color="#FBFAF9"/></linearGradient>
+      </defs>
+      <path d="M0 600 H1600 V1000 H0 Z" fill="url(#salt)"/>
+      <!-- the grooves of an old riverbed, running out to the lighthouse -->
+      <g fill="none" stroke="#9DB2B6" stroke-linecap="round">
+        <path d="M-40 1000 C300 820 760 700 1150 612" stroke-width="3" opacity=".7"/>
+        <path d="M120 1000 C420 840 820 712 1172 614" stroke-width="2" opacity=".55"/>
+        <path d="M380 1000 C620 860 900 724 1196 616" stroke-width="1.6" opacity=".45"/>
+      </g>
+      <g fill="#DDD8D7" opacity=".9">
+        <ellipse cx="420" cy="660" rx="90" ry="7"/><ellipse cx="900" cy="690" rx="140" ry="8"/><ellipse cx="1380" cy="650" rx="70" ry="5"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="title__type" data-depth="0.12">
+    <p class="title__kicker">A story in three chapters</p>
+    <h1 class="title__h">The Lantern<br><em>That Remembered</em></h1>
+  </div>
+
+  <svg class="plane plane--fore" aria-hidden="true" data-depth="0" data-px="28" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMax slice">
+    <defs>
+      <linearGradient id="crust" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#E9E5E3"/></linearGradient>
+    </defs>
+    <path d="M0 880 C120 846 210 852 300 872 C380 890 470 900 560 930 C620 950 660 980 700 1000 L0 1000 Z" fill="url(#crust)"/>
+    <path d="M0 880 C120 846 210 852 300 872 C380 890 470 900 560 930 C620 950 660 980 700 1000" fill="none" stroke="#D3CDCB" stroke-width="2"/>
+    <path d="M960 1000 C1010 976 1050 960 1100 944 C1240 892 1380 870 1600 862 L1600 1000 L1100 1000 Z" fill="url(#crust)"/>
+    <path d="M960 1000 C1010 976 1050 960 1100 944 C1240 892 1380 870 1600 862" fill="none" stroke="#D3CDCB" stroke-width="2"/>
+    <!-- old jetty pilings -->
+    <g fill="#3A2E28">
+      <rect x="58" y="740" width="16" height="180" rx="3"/><rect x="104" y="776" width="13" height="130"/><rect x="146" y="800" width="11" height="100"/>
+      <rect x="186" y="826" width="9" height="70"/>
+    </g>
+    <path d="M66 760 C100 790 120 800 152 812" fill="none" stroke="#6E422B" stroke-width="3"/>
+  </svg>
+  <div class="title__haze" aria-hidden="true"></div>
+
+  <nav class="title__contents" aria-label="Contents">
+    <ol>
+      <li><a href="#ch1"><span>I</span> <!--T1--></a></li>
+      <li><a href="#ch2"><span>II</span> <!--T2--></a></li>
+      <li><a href="#ch3"><span>III</span> <!--T3--></a></li>
+      <li><a href="#three"><span>&#8226;</span> The three</a></li>
+      <li><a href="assets/download/the-lantern-that-remembered.docx" download><span>&#8595;</span> The Word document</a></li>
+    </ol>
+  </nav>
+</header>
+
+<main>
+  <!-- ============ I ============ -->
+  <section class="chapter chapter--one" id="ch1" data-ground="paper" data-folio="I|The Missing Shore" aria-labelledby="ch1-h">
+    <div class="intertitle" data-sc-reveal="up" data-sc-reveal-at="0.12 0.42">
+      <p class="intertitle__n" aria-hidden="true">I</p>
+      <h2 id="ch1-h" class="intertitle__h"><span class="vh">Chapter one. </span><!--T1--></h2>
+    </div>
+    <div class="spread">
+      <figure class="detail" data-sc-in>
+        <div class="detail__crop" style="--ox:63%;--oy:68%">
+          <img src="assets/img/mira-600.webp" srcset="assets/img/mira-600.webp 600w, assets/img/mira.webp 896w" sizes="(min-width: 900px) 30vw, 60vw" width="896" height="1200" alt="Detail: a girl's hands holding a rolled coastal map tied with string and a copper pen." loading="lazy" decoding="async">
+        </div>
+        <figcaption>Mira's maps, and the copper pen.</figcaption>
+      </figure>
+      <div class="prose">
+<!--CH1-->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ II ============ -->
+  <section class="chapter chapter--two" id="ch2" data-ground="ink" data-folio="II|A Light with a Price" aria-labelledby="ch2-h">
+    <div class="intertitle" data-sc-reveal="left" data-sc-reveal-at="0.12 0.42">
+      <p class="intertitle__n" aria-hidden="true">II</p>
+      <h2 id="ch2-h" class="intertitle__h"><span class="vh">Chapter two. </span><!--T2--></h2>
+    </div>
+    <div class="spread spread--trail">
+      <div class="prose">
+<!--CH2-->
+      </div>
+      <figure class="detail detail--tall">
+        <div class="detail__crop" style="--ox:44%;--oy:70%">
+          <img class="drift" src="assets/img/keeper-600.webp" srcset="assets/img/keeper-600.webp 600w, assets/img/keeper.webp 896w" sizes="(min-width: 900px) 30vw, 60vw" width="896" height="1200" alt="Detail: an old woman's hands in violet sleeves holding an empty glass bottle to her chest, lit memory jars on the shelves behind." loading="lazy" decoding="async">
+        </div>
+        <figcaption>An empty bottle, held close.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ III ============ -->
+  <section class="chapter chapter--three" id="ch3" data-ground="sea" data-folio="III|What the Sea Returned" aria-labelledby="ch3-h">
+    <div class="intertitle" data-sc-reveal="iris" data-sc-reveal-at="0.1 0.45">
+      <p class="intertitle__n" aria-hidden="true">III</p>
+      <h2 id="ch3-h" class="intertitle__h"><span class="vh">Chapter three. </span><!--T3--></h2>
+    </div>
+    <div class="spread">
+      <figure class="detail" data-sc-in>
+        <div class="detail__crop" style="--ox:44%;--oy:66%">
+          <img src="assets/img/tavi-600.webp" srcset="assets/img/tavi-600.webp 600w, assets/img/tavi.webp 896w" sizes="(min-width: 900px) 30vw, 60vw" width="896" height="1200" alt="Detail: a copper lantern with a small breaking wave inside its glass, held in two hands with faint sea-glass light curling at the sleeves." loading="lazy" decoding="async">
+        </div>
+        <figcaption>The lantern, and the wave inside it.</figcaption>
+      </figure>
+      <div class="prose">
+<!--CH3-->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE THREE ============ -->
+  <section class="three" id="three" data-ground="surface" data-folio="&#8226;|The three" aria-labelledby="three-h">
+    <h2 id="three-h" class="three__h">The three</h2>
+    <ul class="plates" data-sc-in data-sc-stagger="110">
+      <li class="plate">
+        <figure>
+          <div class="plate__img" data-sc-tilt="4"><img src="assets/img/mira-600.webp" srcset="assets/img/mira-600.webp 600w, assets/img/mira.webp 896w" sizes="(min-width: 900px) 30vw, 90vw" width="896" height="1200" alt="Portrait of Mira: a girl with dark wavy hair in an indigo work jacket with copper buttons, holding a rolled map and a copper pen on a salt-crusted shore at night, a lighthouse lit behind her." loading="lazy" decoding="async"></div>
+          <figcaption>
+            <h3>Mira</h3>
+            <p class="plate__role">The mapmaker</p>
+            <p>She keeps the salt stain on her oldest sheet and her father's line in the margin. Everyone else in town accepts the fields. She is the one who still sees the hole the sea left.</p>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="plate plate--drop">
+        <figure>
+          <div class="plate__img" data-sc-tilt="4"><img src="assets/img/tavi-600.webp" srcset="assets/img/tavi-600.webp 600w, assets/img/tavi.webp 896w" sizes="(min-width: 900px) 30vw, 90vw" width="896" height="1200" alt="Portrait of Tavi: a curly-haired boy in a yellow raincoat and violet jumper, holding a copper lantern with a wave inside it, his sleeves turning to sea-glass light at the edges." loading="lazy" decoding="async"></div>
+          <figcaption>
+            <h3>Tavi</h3>
+            <p class="plate__role">The promise</p>
+            <p>A boy in a yellow raincoat, shells on his boots, a copper lantern with a tiny wave breaking inside it. He lasts exactly as long as someone remembers why he set out.</p>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="plate">
+        <figure>
+          <div class="plate__img" data-sc-tilt="4"><img src="assets/img/keeper-600.webp" srcset="assets/img/keeper-600.webp 600w, assets/img/keeper.webp 896w" sizes="(min-width: 900px) 30vw, 90vw" width="896" height="1200" alt="Portrait of the keeper: an elderly woman with a silver braid wound around her head, in a violet coat, holding an empty bottle among shelves of glowing memory jars inside a lighthouse." loading="lazy" decoding="async"></div>
+          <figcaption>
+            <h3>The keeper</h3>
+            <p class="plate__role">The buyer of memories</p>
+            <p>She sits in a violet coat beneath a clock that has stopped, and takes only what is offered. The first memory she ever bought was her own.</p>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============ STILLS (optional cinematic set) ============ -->
+  <section class="stills" id="stills" data-ground="sea" data-folio="&#8226;|Film stills" aria-labelledby="stills-h">
+    <header class="stills__head" data-sc-in>
+      <p class="stills__kicker">An alternate set</p>
+      <h2 id="stills-h" class="stills__h">Film stills</h2>
+      <p class="stills__note">The same three, imagined again as frames from a film that has not been made. The painted portraits above are the book's; these are another way of seeing it.</p>
+    </header>
+    <figure class="still still--wide" data-sc-in>
+      <div class="still__img"><img src="assets/img/still-hero-vanished-sea-640.webp" srcset="assets/img/still-hero-vanished-sea-640.webp 640w, assets/img/still-hero-vanished-sea.webp 1280w" sizes="(min-width: 900px) 84vw, 100vw" width="1280" height="720" alt="Dusk over the harbour town: stone houses with lit windows around a cobbled square with a fountain and a beached rowing boat, the lighthouse beam crossing a calm sea beyond the roofs." loading="lazy" decoding="async"></div>
+      <figcaption>The harbour, returned. Boats on the cobbles, water where the fields were.</figcaption>
+    </figure>
+    <ul class="stills__row" data-sc-in data-sc-stagger="110">
+      <li class="still"><figure>
+        <div class="still__img"><img src="assets/img/still-mira-640.webp" srcset="assets/img/still-mira-640.webp 640w, assets/img/still-mira.webp 1280w" sizes="(min-width: 900px) 28vw, 100vw" width="1280" height="720" alt="Mira in her indigo jacket on a foggy shore at night, a rolled chart and copper pen in her hands, the lighthouse beam behind her." loading="lazy" decoding="async"></div>
+        <figcaption><b>Mira</b> on the shore that isn't on any map</figcaption>
+      </figure></li>
+      <li class="still"><figure>
+        <div class="still__img"><img src="assets/img/still-tavi-640.webp" srcset="assets/img/still-tavi-640.webp 640w, assets/img/still-tavi.webp 1280w" sizes="(min-width: 900px) 28vw, 100vw" width="1280" height="720" alt="Tavi in his yellow raincoat on a violet beach at dusk, holding the copper lantern with a glowing wave inside it, light curling off his sleeves." loading="lazy" decoding="async"></div>
+        <figcaption><b>Tavi</b> and the lantern with the sea in it</figcaption>
+      </figure></li>
+      <li class="still"><figure>
+        <div class="still__img"><img src="assets/img/still-keeper-640.webp" srcset="assets/img/still-keeper-640.webp 640w, assets/img/still-keeper.webp 1280w" sizes="(min-width: 900px) 28vw, 100vw" width="1280" height="720" alt="The keeper in her violet coat, holding an empty bottle against her chest, in front of curved shelves of glowing memory jars at the top of the lighthouse." loading="lazy" decoding="async"></div>
+        <figcaption><b>The keeper</b> among the bottled memories</figcaption>
+      </figure></li>
+    </ul>
+  </section>
+</main>
+
+<!-- ============ COLOPHON ============ -->
+<footer class="colophon" id="colophon" data-ground="paper" data-folio="&#8226;|Colophon">
+  <svg class="colophon__lamp" viewBox="0 0 80 110" aria-hidden="true">
+    <defs><radialGradient id="glow" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFE3BC"/><stop offset="1" stop-color="#FFE3BC" stop-opacity="0"/></radialGradient></defs>
+    <circle cx="40" cy="62" r="40" fill="url(#glow)"/>
+    <path d="M30 16 a10 10 0 0 1 20 0" fill="none" stroke="#6E422B" stroke-width="2.4"/>
+    <path d="M24 30 L40 18 L56 30 Z" fill="#AD633D"/>
+    <rect x="24" y="30" width="32" height="56" fill="#EAF1F1" stroke="#6E422B" stroke-width="2.4"/>
+    <path d="M27 72 q6 -12 13 -2 t13 -4" fill="none" stroke="#527C83" stroke-width="2.4"/>
+    <path d="M27 79 h26" stroke="#527C83" stroke-width="1.6" opacity=".6"/>
+    <rect x="20" y="86" width="40" height="8" fill="#AD633D"/>
+  </svg>
+  <div class="colophon__body">
+    <p class="colophon__title">The Lantern That Remembered</p>
+    <p>A short story in three chapters, <!--WORDS--> words, reproduced here exactly as written. To keep it, <a href="assets/download/the-lantern-that-remembered.docx" download>download the Word document</a> (.docx, 39&#8239;KB).</p>
+    <p class="colophon__small">Set in Instrument Serif and Newsreader. The portraits were painted by an image model (Gemini 3.1 Flash Lite Image, through OpenRouter) from written character notes; the maps and the title page are drawn in code. The film stills were made with Grok Imagine, from those portraits.</p>
+    <p class="colophon__small"><a href="#top">Back to the title page</a></p>
+  </div>
+</footer>
+
+<script src="scrollcraft.js"></script>
+<script src="site.js"></script>
+</body>
+</html>
+<!--MAP:START-->
+</div></div>
+<figure class="map" data-map aria-labelledby="map-cap">
+  <div class="map__frame" tabindex="0" role="group" aria-label="Mira's map. Move the lantern with the pointer, a tap, or the arrow keys to see the harbour under the fields.">
+    <svg class="map__layer" viewBox="0 0 1000 680" aria-hidden="true"><use href="#map-base"/></svg>
+    <div class="map__dark" aria-hidden="true"></div>
+    <svg class="map__layer map__lost" viewBox="0 0 1000 680" aria-hidden="true"><use href="#map-lost"/></svg>
+    <div class="map__lantern" aria-hidden="true"></div>
+  </div>
+  <figcaption id="map-cap"><span class="map__how">Hold the lantern over the map.</span> Under the fields and the railway, the town's harbour is still there.</figcaption>
+</figure>
+<div class="spread spread--after"><div class="prose">
+<!--MAP:END-->
+<!--PEAK:START-->
+</div></div>
+<div class="beam__hush" aria-hidden="true"></div>
+<div class="beam" data-peak data-sc-act="pin" data-sc-span="3.2">
+  <div class="sc-stage beam__stage">
+    <figure class="beam__map" aria-label="The same map, as the lighthouse beam passes through it: the coastline draws itself back in copper ink and the harbour fills with sea.">
+      <svg viewBox="0 0 1000 680" aria-hidden="true"><use href="#map-base"/></svg>
+      <svg class="beam__lost" viewBox="0 0 1000 680" aria-hidden="true"><use href="#map-lost"/></svg>
+      <svg class="beam__lights" viewBox="0 0 1000 680" aria-hidden="true">
+        <g fill="#FFD9A8" stroke="#AD633D" stroke-width="1.2">
+          <circle style="--tx:-688px;--ty:-322px;--d:0" cx="872" cy="400" r="5"/>
+          <circle style="--tx:-740px;--ty:-260px;--d:.06" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-640px;--ty:-200px;--d:.12" cx="872" cy="400" r="5"/>
+          <circle style="--tx:-560px;--ty:-280px;--d:.04" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-470px;--ty:-200px;--d:.16" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-520px;--ty:-150px;--d:.1" cx="872" cy="400" r="5"/>
+          <circle style="--tx:-760px;--ty:-110px;--d:.2" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-600px;--ty:-90px;--d:.24" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-420px;--ty:-260px;--d:.08" cx="872" cy="400" r="3.5"/>
+          <circle style="--tx:-340px;--ty:-40px;--d:.28" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-260px;--ty:80px;--d:.18" cx="872" cy="400" r="4"/>
+          <circle style="--tx:-130px;--ty:150px;--d:.3" cx="872" cy="400" r="3.5"/>
+        </g>
+      </svg>
+      <figcaption>Copper ink over the invented fields.</figcaption>
+    </figure>
+  </div>
+</div>
+<div class="spread spread--after"><div class="prose">
+<!--PEAK:END-->
